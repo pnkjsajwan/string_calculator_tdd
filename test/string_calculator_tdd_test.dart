@@ -7,4 +7,8 @@ void main() {
       expect(StringCalculatorTDD.add(''), equals(0));
     });
   });
+
+test('returns number if input is a single number like "1"', () {
+      expect(StringCalculatorTDD.add('1'), equals(1));
+    });  
 }
