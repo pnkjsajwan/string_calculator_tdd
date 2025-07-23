@@ -11,4 +11,8 @@ void main() {
 test('returns number if input is a single number like "1"', () {
       expect(StringCalculatorTDD.add('1'), equals(1));
     });  
+
+test('returns sum of two comma-separated numbers like "1,2"', () {
+      expect(StringCalculatorTDD.add('1,2'), equals(3));
+    });    
 }
