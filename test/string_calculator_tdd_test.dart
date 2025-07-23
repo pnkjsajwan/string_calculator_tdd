@@ -25,4 +25,9 @@ test('returns sum if numbers are separated with commas and/or new lines like "1\
   expect(StringCalculatorTDD.add('1\n2,3'), equals(6));
   expect(StringCalculatorTDD.add('4\n5\n6'), equals(15));
 });
+
+test('supports custom delimiter with format //;\n1;2 and returns sum', () {
+  expect(StringCalculatorTDD.add('//;\n1;2'), equals(3));
+  expect(StringCalculatorTDD.add('//#\n4#5#6'), equals(15));
+});
 }

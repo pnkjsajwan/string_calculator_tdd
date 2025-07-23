@@ -3,16 +3,24 @@ class StringCalculatorTDD {
     if (input.isEmpty) return 0;
   
     final delimiters = [',', '\n'];
+    String numbers = input;
 
-   //normalized all delimiters into comma first
-    String normalized = input;
-    for (var delimiter in delimiters) {
-      normalized = normalized.replaceAll(delimiter, ',');
+    // Check for custom delimiter
+    if (input.startsWith('//')) {
+      final delimiterEndIndex = input.indexOf('\n');
+      final customDelimiter = input.substring(2, delimiterEndIndex);
+      delimiters.add(customDelimiter);
+      numbers = input.substring(delimiterEndIndex + 1);
     }
 
-    return normalized
+   //normalized all delimiters into comma first
+    for (var delimiter in delimiters) {
+      numbers = numbers.replaceAll(delimiter, ',');
+    }
+
+    return numbers
         .split(',')
-        .map((token) => int.parse(token))
+        .map((value) => int.parse(value))
         .reduce((sum, number) => sum + number);
   }
 }
