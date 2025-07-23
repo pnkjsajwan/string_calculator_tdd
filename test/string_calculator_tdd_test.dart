@@ -30,4 +30,18 @@ test('supports custom delimiter with format //;\n1;2 and returns sum', () {
   expect(StringCalculatorTDD.add('//;\n1;2'), equals(3));
   expect(StringCalculatorTDD.add('//#\n4#5#6'), equals(15));
 });
+
+test('throws exception listing a single negative number', () {
+  expect(() => StringCalculatorTDD.add('1,-2,3'),
+      throwsA(predicate((e) =>
+          e is FormatException &&
+          e.message == 'Negative numbers not allowed: -2')));
+});
+
+test('throws exception listing all negative numbers', () {
+  expect(() => StringCalculatorTDD.add('2,-4,-5'),
+      throwsA(predicate((e) =>
+          e is FormatException &&
+          e.message == 'Negative numbers not allowed: -4,-5')));
+});
 }

@@ -18,9 +18,15 @@ class StringCalculatorTDD {
       numbers = numbers.replaceAll(delimiter, ',');
     }
 
-    return numbers
-        .split(',')
-        .map((value) => int.parse(value))
-        .reduce((sum, number) => sum + number);
+     final numberList = numbers.split(',').map(int.parse).toList();
+
+    // Check for negatives and throw exception with all negatives listed
+    final negatives = numberList.where((num) => num < 0).toList();
+    if (negatives.isNotEmpty) {
+      throw FormatException(
+          'Negative numbers not allowed: ${negatives.join(',')}');
+    }
+
+    return numberList.reduce((sum, number) => sum + number);
   }
 }
