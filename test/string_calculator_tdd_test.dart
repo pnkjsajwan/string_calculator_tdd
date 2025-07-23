@@ -19,5 +19,10 @@ test('returns sum of two comma-separated numbers like "1,2"', () {
 test('returns sum of any amount of comma separated numbers like "1,2,3,4"', () {
   expect(StringCalculatorTDD.add('1,2,3,4'), equals(10));
   expect(StringCalculatorTDD.add('10,20,30,40,50'), equals(150));
-});     
+});
+
+test('returns sum if numbers are separated with commas and/or new lines like "1\\n2,3"', () {
+  expect(StringCalculatorTDD.add('1\n2,3'), equals(6));
+  expect(StringCalculatorTDD.add('4\n5\n6'), equals(15));
+});
 }
